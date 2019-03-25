@@ -1,0 +1,45 @@
+
+<h3>Cadastro de Curso </h3>
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nome do Curso: </label>
+    <input
+      #cursoName
+      type="nome"
+      class="form-control"
+      id="exampleInputEmail1"
+      placeholder="Digite o nome do curso"
+    />
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    (click)="add(cursoName.value); cursoName.value = ''"
+  >
+    Salvar
+  </button>
+</form>
+
+<br />
+<br />
+<br />
+
+<table class="table table-bordered table-dark" bordered="true">
+  <thead>
+    <tr>
+      <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let curso of cursos">
+      <th scope="row">{{ curso.id }}</th>
+      <td>{{ curso.name }}</td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="delete(curso)">
+          Apagar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

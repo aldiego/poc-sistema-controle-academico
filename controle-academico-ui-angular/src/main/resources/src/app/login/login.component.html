@@ -1,0 +1,33 @@
+<div class="col-sm-6">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputUsuario1">Usuario</label>
+      <input
+        name="username"
+        type="username"
+        class="form-control"
+        id="exampleInputUsuario1"
+        placeholder="Digite o usuario"
+        #username="ngModel"
+        [(ngModel)]="loginData.username"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha</label>
+      <input
+        name="password"
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+        #password="ngModel"
+        [(ngModel)]="loginData.password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="login()">
+      Entrar
+    </button>
+  </form>
+</div>

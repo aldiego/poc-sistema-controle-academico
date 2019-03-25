@@ -6,10 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-export class Curso {
-  constructor(public id: number, public name: string) {}
-}
-
+import { Curso } from './curso';
 @Injectable()
 export class AppService {
   constructor(private _router: Router, private _http: Http) {}
@@ -43,14 +40,14 @@ export class AppService {
       );
   }
 
-  saveToken(token) {
+  saveToken(token: any) {
     const expireDate = new Date().getTime() + 1000 * token.expires_in;
     Cookie.set('access_token', token.access_token, expireDate);
     console.log('Obtained Access token');
     this._router.navigate(['/']);
   }
 
-  getResource(resourceUrl): Observable<Curso> {
+  getResource(resourceUrl: any): Observable<Curso> {
     const headers = new Headers({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
       Authorization: 'Bearer ' + Cookie.get('access_token')
